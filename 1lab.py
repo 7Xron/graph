@@ -1,6 +1,3 @@
-import networkx as nx
-
-
 # Смежность вершин
 inc = {
     1: [2, 8],
@@ -14,9 +11,17 @@ inc = {
     9: [4],
 }
 
-visited = set()  # Посещена ли вершина?
+visited = set()  # Посещена ли вершина
 Q = []  # Очередь
-BFS = []
-G = nx.Graph()
+BFS = [] 
+
+def bfs(v):
+    if v in visited:  # Если вершина уже посещена, выходим
+        return
+    visited.add(v)  # Посетили вершину v
+    BFS.append(v)  # Запоминаем порядок обхода
 
 
+
+start = 1
+bfs(start)  # start - начальная вершина обхода
