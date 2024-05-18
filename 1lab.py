@@ -1,3 +1,5 @@
+
+# BFS - Breadth First Search Поиск в ширину
 # Смежность вершин
 inc = {
     1: [2, 8],
@@ -13,15 +15,20 @@ inc = {
 
 visited = set()  # Посещена ли вершина
 Q = []  # Очередь
-BFS = [] 
+BFS = []
 
 def bfs(v):
     if v in visited:  # Если вершина уже посещена, выходим
         return
     visited.add(v)  # Посетили вершину v
     BFS.append(v)  # Запоминаем порядок обхода
+    for i in inc[v]:  # Все смежные с v вершины
+        if not i in visited: # Если вершина не посещена 
+            Q.append(i) # Добавляем вершину в очередь
+    while Q:
+        bfs(Q.pop(0)) # Добавляем вершину в поиск вершин
 
 
-
-start = 1
+start = 4
 bfs(start)  # start - начальная вершина обхода
+print(BFS)
