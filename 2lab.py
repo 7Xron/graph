@@ -12,13 +12,13 @@ G.add_edge(0, 1)
 G.add_edge(1, 2)
 G.add_edge(2, 3)
 
-G = nx.cycle_graph(2)
-G.add_node(3)
-G.add_node(4)
-G.add_edge(3, 4)
-
 print(G)
 
 centrality = nx.eigenvector_centrality_numpy(G)
 for n in centrality:
     print("c(", n, ")=", centrality[n])
+
+# c( 0 )= 0.3717480344601849
+# c( 1 )= 0.601500955007546
+# c( 2 )= 0.6015009550075454
+# c( 3 )= 0.37174803446018423
