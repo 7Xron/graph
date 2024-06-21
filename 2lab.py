@@ -1,22 +1,19 @@
 import networkx as nx
-
-G = nx.Graph()
-
-# добавление узлов
-G.add_node(0) 
-G.add_node(1)
-G.add_node(2)
-
+G = nx.Graph() # Создаем пустой неориентированный граф
+# Добавляем вершины
+G.add_nodes_from([1, 2, 3, 4])
 # добавление ребр
-G.add_edge(0, 1)
-G.add_edge(1, 2)
-G.add_edge(2, 3)
+G.add_nodes_from(1, 2)
+G.add_nodes_from(1, 3)
+G.add_nodes_from(1, 4)
+print(G) # выводим вершины и ребра
 
-print(G)
-
-centrality = nx.eigenvector_centrality_numpy(G)
-for n in centrality:
-    print("c(", n, ")=", centrality[n])
+def nodes(G):
+    sc = nx.closeness_centrality(G) # создаем словарь центральностей
+    dadaf = pd.DataFrame.from_dict({'вершина': list(sc.keys()), 'центральность': list(sc.values())}) # вывод словаря в датафрейм
+    return dadaf.sort_values('центральность', ascending=False)# возвращаем список центральностей, сортируем по убываниию
+len("количества строк: " + nodes) # подсчёта количества строк датафреймов
+print(nodes(G))
 
 # c( 0 )= 0.3717480344601849
 # c( 1 )= 0.601500955007546
